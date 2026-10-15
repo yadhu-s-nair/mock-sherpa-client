@@ -1,0 +1,396 @@
+{
+ "_note": "Errors a real sherpa can raise mid-trip, copied from mule's ati/std_configs/fatal_errors/mule_fatal_errors.json (the catalogue the real handle_error() reads). The mock sherpas send these to FM as incidents.",
+ "errors": {
+  "high_cte_te": {
+   "module": "control",
+   "sub_module": "tracker",
+   "err_msg": "Experiencing high CTE/theta error",
+   "err_disp_msg": "Tracking error - Vehicle went off-track",
+   "recovery_msg": "Please cancel the current trip and take sherpa to the nearest station and recover from there",
+   "relevant_logs": [
+    "camera",
+    "drivable",
+    "lidar",
+    "mule.log",
+    "tracker.csv",
+    "trip_log.csv",
+    "low_level_control.csv",
+    "drive.csv",
+    "waypoints.json",
+    "grid_map_attributes.json",
+    "mpc_costs.csv",
+    "planner.csv",
+    "wheel_control.csv",
+    "yelli.csv",
+    "yelli_odo.csv",
+    "consolidated.toml",
+    "allconfig.txt"
+   ],
+   "error_type_code": "1",
+   "error_classification_code": "3",
+   "error_module_code": "01",
+   "error_sub_module_code": "23",
+   "error_description_code": "1"
+  },
+  "lidar_disconnect": {
+   "module": "devices",
+   "sub_module": "lidar driver",
+   "err_msg": "Lidar USB/ethernet connection disconnect",
+   "err_disp_msg": "Device error - Lidar USB/ethernet connection disconnect",
+   "recovery_msg": "Check USB/Ethernet connection",
+   "relevant_logs": [
+    "mule.log",
+    "yelli_odo.csv",
+    "consolidated.toml",
+    "allconfig.txt",
+    "mule_drivers.log"
+   ],
+   "error_type_code": "1",
+   "error_classification_code": "3",
+   "error_module_code": "03",
+   "error_sub_module_code": "15",
+   "error_description_code": "1"
+  },
+  "camera_disconnect": {
+   "module": "devices",
+   "sub_module": "realsense driver",
+   "err_msg": "Camera USB connection disconnect",
+   "err_disp_msg": "Device error - Camera USB connection disconnect",
+   "recovery_msg": "Check USB connection",
+   "relevant_logs": [
+    "mule.log",
+    "yelli_odo.csv",
+    "consolidated.toml",
+    "allconfig.txt",
+    "mule_drivers.log"
+   ],
+   "error_type_code": "1",
+   "error_classification_code": "3",
+   "error_module_code": "03",
+   "error_sub_module_code": "15",
+   "error_description_code": "1"
+  },
+  "device_monitor": {
+   "module": "drivers",
+   "sub_module": "devices",
+   "err_msg": "Device disconnected",
+   "err_disp_msg": "Device disconnected. Stopping Sherpa while device reconnects",
+   "recovery_msg": "Please powercycle the sherpa",
+   "relevant_logs": [
+    "mule.log"
+   ],
+   "error_type_code": "1",
+   "error_classification_code": "1",
+   "error_module_code": "04",
+   "error_sub_module_code": "03",
+   "error_description_code": "1"
+  },
+  "can_latency": {
+   "module": "drivers",
+   "sub_module": "can_drivers",
+   "err_msg": "can msgs latency too high",
+   "err_disp_msg": "CAN latency too high. Stopping Sherpa",
+   "recovery_msg": "Check CAN bus and please powercycle the sherpa",
+   "relevant_logs": [
+    "mule.log",
+    "mule_drivers.log"
+   ],
+   "error_type_code": "1",
+   "error_classification_code": "1",
+   "error_module_code": "04",
+   "error_sub_module_code": "35",
+   "error_description_code": "3"
+  },
+  "ekf_pose_diverged": {
+   "module": "slam",
+   "sub_module": "yelli",
+   "err_msg": "EKF pose diverged from yelli",
+   "err_disp_msg": "The EKF pose v/s Yelli pose exceeded threshold",
+   "recovery_msg": "Please take the sherpa to the nearest station and recover.",
+   "relevant_logs": [
+    "mule.log",
+    "tracker.csv",
+    "trip_log.csv",
+    "low_level_control.csv",
+    "drive.csv",
+    "waypoints.json",
+    "grid_map_attributes.json",
+    "planner.csv",
+    "wheel_control.csv",
+    "yelli_odo.csv",
+    "yelli.csv",
+    "consolidated.toml",
+    "allconfig.txt"
+   ],
+   "error_type_code": "1",
+   "error_classification_code": "3",
+   "error_module_code": "12",
+   "error_sub_module_code": "29",
+   "error_description_code": "1"
+  },
+  "ekf_covariance_exceeded": {
+   "module": "slam",
+   "sub_module": "yelli",
+   "err_msg": "EKF covariance exceeded threshold",
+   "err_disp_msg": "EKF state covariance crossed the safe threshold (state estimate uncertainty diverged)",
+   "recovery_msg": "Please take the sherpa to the nearest station and recover.",
+   "relevant_logs": [
+    "mule.log",
+    "tracker.csv",
+    "trip_log.csv",
+    "low_level_control.csv",
+    "drive.csv",
+    "waypoints.json",
+    "grid_map_attributes.json",
+    "planner.csv",
+    "wheel_control.csv",
+    "yelli_odo.csv",
+    "yelli.csv",
+    "consolidated.toml",
+    "allconfig.txt"
+   ],
+   "error_type_code": "1",
+   "error_classification_code": "3",
+   "error_module_code": "12",
+   "error_sub_module_code": "29",
+   "error_description_code": "2"
+  },
+  "High_yelli_vs_wheel_divergence": {
+   "module": "slam",
+   "sub_module": "localization_check",
+   "err_msg": "High_yelli_vs_wheel_divergence",
+   "err_disp_msg": "High divergence between Yelli and wheel odometry",
+   "recovery_msg": "Check wheel encoder data (wheel_control.csv) and Yelli via localisation view. If wheel encoder data looks correct, take the sherpa to the nearest station and recover.",
+   "relevant_logs": [
+    "mule.log",
+    "localization_check.csv",
+    "yelli_odo.csv",
+    "yelli_raw.csv",
+    "wheel_control.csv",
+    "consolidated.toml",
+    "allconfig.txt"
+   ],
+   "error_type_code": "1",
+   "error_classification_code": "3",
+   "error_module_code": "12",
+   "error_sub_module_code": "29",
+   "error_description_code": "3"
+  },
+  "lidar_missing_sectors": {
+   "module": "slam",
+   "sub_module": "yelli",
+   "err_msg": "Continuously missing sectors in lidar above missing sector threshold.",
+   "err_disp_msg": "Missing sectors in lidar",
+   "recovery_msg": "Contact Ati Support",
+   "relevant_logs": [
+    "lidar",
+    "mule.log",
+    "trip_log.csv",
+    "low_level_control.csv",
+    "yelli_odo.csv",
+    "consolidated.toml",
+    "allconfig.txt"
+   ],
+   "error_type_code": "1",
+   "error_classification_code": "1",
+   "error_module_code": "12",
+   "error_sub_module_code": "29",
+   "error_description_code": "1"
+  },
+  "lidar_blocked_sectors": {
+   "module": "perception",
+   "sub_module": "drivable_region",
+   "err_msg": "Missing sectors in lidar",
+   "err_disp_msg": "Lidar is blocked",
+   "recovery_msg": "Check for lidar blockage",
+   "relevant_logs": [
+    "lidar",
+    "mule.log",
+    "trip_log.csv",
+    "low_level_control.csv",
+    "yelli_odo.csv",
+    "consolidated.toml",
+    "allconfig.txt"
+   ],
+   "error_type_code": "1",
+   "error_classification_code": "1",
+   "error_module_code": "12",
+   "error_sub_module_code": "29",
+   "error_description_code": "1"
+  },
+  "pose_callback": {
+   "module": "perception",
+   "sub_module": "drivable_region",
+   "err_msg": "Exception in pose_callback",
+   "err_disp_msg": "Localization error",
+   "recovery_msg": "Contact Ati Support",
+   "relevant_logs": [
+    "mule.log",
+    "yelli_odo.csv",
+    "consolidated.toml",
+    "allconfig.txt"
+   ],
+   "error_type_code": "1",
+   "error_classification_code": "3",
+   "error_module_code": "08",
+   "error_sub_module_code": "04",
+   "error_description_code": "1"
+  },
+  "lidar_callback": {
+   "module": "perception",
+   "sub_module": "drivable_region",
+   "err_msg": "Exception in lidar_callback",
+   "err_disp_msg": "Unable to process lidar frames",
+   "recovery_msg": "Contact Ati Support",
+   "relevant_logs": [
+    "mule.log",
+    "yelli_odo.csv",
+    "consolidated.toml",
+    "allconfig.txt"
+   ],
+   "error_type_code": "1",
+   "error_classification_code": "3",
+   "error_module_code": "08",
+   "error_sub_module_code": "04",
+   "error_description_code": "2"
+  },
+  "powerboard_disconnect": {
+   "module": "drivers",
+   "sub_module": "devices",
+   "err_msg": "Powerboard disconnected",
+   "err_disp_msg": "Powerboard disconnected. Stopping Sherpa while device reconnects",
+   "recovery_msg": "Please powercycle the sherpa",
+   "relevant_logs": [
+    "mule.log"
+   ],
+   "error_type_code": "1",
+   "error_classification_code": "1",
+   "error_module_code": "04",
+   "error_sub_module_code": "03",
+   "error_description_code": "1"
+  },
+  "can_hall_sensor": {
+   "module": "drivers",
+   "sub_module": "can_drivers",
+   "err_msg": "can_hall_sensor disconnected",
+   "err_disp_msg": "Hall Sensor disconnected. Stopping Sherpa while device reconnects",
+   "recovery_msg": "Check the software and hardware connections",
+   "relevant_logs": [
+    "mule.log",
+    "mule_drivers.log"
+   ],
+   "error_type_code": "1",
+   "error_classification_code": "1",
+   "error_module_code": "04",
+   "error_sub_module_code": "35",
+   "error_description_code": "2"
+  },
+  "can_roboteq": {
+   "module": "drivers",
+   "sub_module": "can_drivers",
+   "err_msg": "can_driver_roboteq disconnected",
+   "err_disp_msg": "Roboteq disconnected. Stopping Sherpa while device reconnects",
+   "recovery_msg": "Check the software and hardware connections",
+   "relevant_logs": [
+    "mule.log",
+    "mule_drivers.log"
+   ],
+   "error_type_code": "1",
+   "error_classification_code": "1",
+   "error_module_code": "04",
+   "error_sub_module_code": "35",
+   "error_description_code": "1"
+  },
+  "MCU_ERROR": {
+   "module": "drivers",
+   "sub_module": "can_drivers",
+   "err_msg": "MCU Error detected",
+   "err_disp_msg": "MCU Error detected. Stopping Sherpa.",
+   "recovery_msg": "Please powercycle the sherpa",
+   "relevant_logs": [
+    "mule.log",
+    "mule_drivers.log",
+    "can_send.csv",
+    "can_recv.csv"
+   ],
+   "error_type_code": "1",
+   "error_classification_code": "1",
+   "error_module_code": "04",
+   "error_sub_module_code": "35",
+   "error_description_code": "1"
+  },
+  "curtis_error": {
+   "module": "drivers",
+   "sub_module": "can_drivers",
+   "err_msg": "Curtis is in error state",
+   "err_disp_msg": "Curtis is in error state. Stopping Sherpa",
+   "recovery_msg": "Please powercycle the sherpa",
+   "relevant_logs": [
+    "mule.log",
+    "mule_drivers.log"
+   ],
+   "error_type_code": "1",
+   "error_classification_code": "1",
+   "error_module_code": "04",
+   "error_sub_module_code": "35",
+   "error_description_code": "3"
+  },
+  "rplidar_disconnected": {
+   "module": "devices",
+   "sub_module": "rplidar driver",
+   "err_msg": "RPLidar serial connection disconnected",
+   "err_disp_msg": "Device error - RPLidar serial connection disconnected",
+   "recovery_msg": "Check USB connection",
+   "relevant_logs": [
+    "mule.log",
+    "consolidated.toml",
+    "allconfig.txt",
+    "mule_drivers.log"
+   ],
+   "error_type_code": "1",
+   "error_classification_code": "3",
+   "error_module_code": "03",
+   "error_sub_module_code": "15",
+   "error_description_code": "1"
+  },
+  "low_disk_space": {
+   "module": "core_recorder",
+   "sub_module": "core_recorder",
+   "err_msg": "Disk free space dropped below fatal threshold",
+   "err_disp_msg": "Low disk space",
+   "recovery_msg": "Free up disk space and restart",
+   "relevant_logs": [
+    "mule.log",
+    "consolidated.toml",
+    "allconfig.txt"
+   ],
+   "error_type_code": "1",
+   "error_classification_code": "3",
+   "error_module_code": "02",
+   "error_sub_module_code": "01",
+   "error_description_code": "2"
+  },
+  "max_current": {
+   "module": "devices",
+   "sub_module": "powerboard",
+   "err_msg": "max. current limit exceeded",
+   "err_disp_msg": "Max current exceeded",
+   "recovery_msg": "Contact Ati Support",
+   "relevant_logs": [
+    "mule.log",
+    "tracker.csv",
+    "low_level_control.csv",
+    "wheel_control.csv",
+    "powerboard.csv",
+    "yelli_odo.csv",
+    "consolidated.toml",
+    "allconfig.txt"
+   ],
+   "error_type_code": "1",
+   "error_classification_code": "1",
+   "error_module_code": "03",
+   "error_sub_module_code": "13",
+   "error_description_code": "1"
+  }
+ }
+}

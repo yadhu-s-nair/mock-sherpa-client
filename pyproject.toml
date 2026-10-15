@@ -1,0 +1,16 @@
+[project]
+name = "mock_sherpa"
+version = "0.1.0"
+description = "Programmable mock sherpa that speaks the real sherpa <-> Fleet Manager protocol"
+requires-python = ">=3.8"
+dependencies = ["aiohttp"]
+
+[tool.setuptools]
+packages = ["mock_sherpa"]
+
+[tool.setuptools.package-data]
+mock_sherpa = ["sherpa_errors.json"]
+
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
