@@ -14,7 +14,7 @@ Usage inside sil_fm_automation.py::provisioned_fleet():
     from mock_sherpa.runner import start_mock_sherpas
 
     entries = [{"name": "mock-sherpa-01", "api_key": "mock-sherpa-01"}, ...]
-    runner = start_mock_sherpas(entries, fm_host="192.168.6.34:443",
+    runner = start_mock_sherpas(entries, fm_host="fm.example.com:443",
                                 map_zip="/path/to/the_map.zip")
     runner.start()
     runner.wait_all_connected(timeout=60)
@@ -66,7 +66,7 @@ class MockSherpaRunner:
     ):
         """
         entries        : list of {"name": ..., "api_key": ...}
-        fm_host        : "host:port" (e.g. "192.168.6.34:443")
+        fm_host        : "host:port" (e.g. "fm.example.com:443")
         tls            : True → wss / https; False → ws / http
         leg_seconds    : simulated time per trip leg (20 s matches perf default)
         station_seconds: time at a station before answering a peripherals request

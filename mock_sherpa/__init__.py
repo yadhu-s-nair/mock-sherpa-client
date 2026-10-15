@@ -6,7 +6,7 @@ Everything below works out of the box; override any FM request with `on()`.
 
 Usage:
     async with aiohttp.ClientSession() as session:
-        sherpa = MockSherpa("sherpa-01", "api_key_123", "192.168.100.120:443", session)
+        sherpa = MockSherpa("sherpa-01", "api_key_123", "fm.example.com:443", session)
 
         # Replace the behaviour for one FM request. handler(msg) or handler(msg, sherpa); sync or async.
         # Return a dict for the ack's response body, False to nack. default_handler() runs the built-in behaviour.
